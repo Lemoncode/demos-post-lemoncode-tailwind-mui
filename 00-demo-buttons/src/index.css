@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-primary: var(--mui-palette-primary-main);
+  --color-secondary: var(--mui-palette-secondary-main);
+  --color-surface: var(--mui-palette-background-paper);
+  --color-background: var(--mui-palette-background-default);
+  --color-foreground: var(--mui-palette-text-primary);
+  --color-muted: var(--mui-palette-text-secondary);
+  --color-divider: var(--mui-palette-divider);
+  --font-sans: "Roboto Variable", system-ui, sans-serif;
+}
