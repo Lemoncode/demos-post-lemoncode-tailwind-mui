@@ -2,7 +2,7 @@
 
 🇬🇧 [English version](./README.md)
 
-Código de acompañamiento del post de Lemoncode [Tailwind CSS + Material UI: lo mejor de ambos mundos en tu aplicación de gestión](https://www.lemoncode.net/blog.html).
+Código de las demos que acompañan al post [Tailwind CSS + Material UI: lo mejor de ambos mundos en tu aplicación de gestión](https://www.lemoncode.net/blog.html).
 
 En el post integramos **Tailwind CSS v4** y **Material UI (v7+)** en una SPA de React — de forma limpia, sin `!important` ni hacks — apoyándonos en una característica de CSS moderno: las **cascade layers** (`@layer`). Además, montamos una única fuente de verdad de tokens de diseño compartida por ambas librerías (modo oscuro incluido) y damos reglas prácticas para decidir quién estila qué.
 
