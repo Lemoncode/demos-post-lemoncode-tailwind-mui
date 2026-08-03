@@ -61,12 +61,21 @@ Dirección única: **MUI define, Tailwind consume**. Nunca al revés — MUI nec
 | Colocar cosas en pantalla (layout, espaciado, anchos)         | Tailwind (`flex`, `grid`, `gap-*`, `p-*`, `w-*`)          |
 | Una variante que el componente ya modela                      | Prop de MUI (`color`, `size`, `variant`)                  |
 | Ajuste visual puntual y estático que el componente no modela  | Utility de Tailwind (p. ej. `bg-primary` en `Avatar`)     |
-| Texto suelto de pantalla                                      | HTML semántico + utilidades (`<h2 className="text-2xl">`) |
 | Texto dentro de una composición MUI (Toolbar, DialogTitle...) | `Typography`                                              |
+| Texto suelto de pantalla                                      | Sin bala de plata: `Typography` o HTML + utilidades (ver abajo); por defecto sigue el criterio del proyecto |
 | Aspecto por defecto de un componente en toda la app           | Tema (`styleOverrides`) o wrapper                         |
 | Slots internos de un componente MUI                           | Tema o wrapper (nunca en la pantalla)                     |
 
 Regla de bolsillo: lo que arrastra estados o valores derivados (hover, foco, disabled, contraste) se pide a MUI; lo estático y puntual, con una utility; colocar cosas, siempre Tailwind.
+
+### Textos: dos criterios válidos, elige uno y sé consistente
+
+`Typography` es el componente de texto de MUI: `variant` pide un escalón de la escala tipográfica del tema y `component` controla por separado la etiqueta HTML renderizada (`variant="h5" component="h2"` se ve como h5 pero es un `<h2>` semántico); resuelve el color por contexto (`color="text.secondary"`, herencia del contraste dentro de un `AppBar`).
+
+- **Opción A — `Typography` para todo** (la que siguen las demos del post): una decisión menos, código homogéneo, escala del tema aplicada sin pensar. En contra: más imports de MUI en código de aplicación y migración de librería más costosa (mitigable con wrappers `<Heading>`/`<Text>`, aunque siempre habrá adaptaciones).
+- **Opción B — diferenciar según contexto**: `Typography` solo dentro de composiciones MUI; HTML semántico + utilidades (`<h2 className="text-2xl font-medium">`) para el texto suelto de pantalla. En contra: hay que decidir texto a texto y la frontera difusa genera inconsistencias.
+
+Si el proyecto no tiene un criterio escrito, usa la opción A. En cualquier caso: dentro de una composición MUI, siempre `Typography` — ahí no hay debate.
 
 ## Errores que no debes cometer
 
