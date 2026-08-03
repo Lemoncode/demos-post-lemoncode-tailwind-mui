@@ -76,14 +76,17 @@ export function EmployeeList() {
       <main className="mx-auto flex max-w-6xl flex-col gap-6 p-6">
         <header className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h2 className="text-2xl font-medium text-foreground">Empleados</h2>
-            <p className="text-sm text-muted">
+            <Typography variant="h5" component="h2" className="font-medium">
+              Empleados
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
               Gestiona la plantilla, filtra por departamento o estado.
-            </p>
+            </Typography>
           </div>
-          <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-            {filtered.length} de {employees.length} empleados
-          </span>
+          <Chip
+            label={`${filtered.length} de ${employees.length} empleados`}
+            color="primary"
+          />
         </header>
 
         <Paper
@@ -153,8 +156,16 @@ export function EmployeeList() {
                           .join("")}
                       </Avatar>
                       <div>
-                        <p className="font-medium">{employee.name}</p>
-                        <p className="text-xs text-muted">{employee.email}</p>
+                        <Typography variant="body2" className="font-medium">
+                          {employee.name}
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          component="p"
+                          color="text.secondary"
+                        >
+                          {employee.email}
+                        </Typography>
                       </div>
                     </div>
                   </TableCell>
@@ -178,9 +189,14 @@ export function EmployeeList() {
               {filtered.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={5}>
-                    <p className="py-8 text-center text-muted">
+                    <Typography
+                      variant="body2"
+                      align="center"
+                      color="text.secondary"
+                      className="py-8"
+                    >
                       No hay empleados que cumplan los filtros.
-                    </p>
+                    </Typography>
                   </TableCell>
                 </TableRow>
               )}
